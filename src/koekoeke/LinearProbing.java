@@ -27,6 +27,7 @@ package koekoeke;
  *
  * @author Mikl&oacute;s Cs&#369;r&ouml;s
  */
-public class LinearProbing {
+public class LinearProbing 
+{
     
 }
