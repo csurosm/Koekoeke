@@ -40,7 +40,7 @@ import java.util.Set;
  * and an existing one is deleted with probability proportional
  * to {@link #dup_rate}. The stationary distribution of the set size 
  * is then either Poisson (if {@link #dup_rate}=0) or negative binomial 
- * (if {@link #dup_rate}&gt 0), with expectation 
+ * (if {@link #dup_rate}&gt; 0), with expectation 
  * {@link #insert_rate}/(1-{@link #dup_rate}). 
  * 
  * @author Mikl&oacute;s Cs&#369;r&ouml;s
@@ -407,7 +407,7 @@ public final class SetTester
         System.out.println("# Phase\t" + init_snapshot.headerString()+"\t// "+test_set.getClass().getCanonicalName());
         System.out.println("init\t" + init_snapshot);
         ExecutionSnapshot warmup_snapshot = timeRandomSequence(G, n_warmup);
-        //System.out.println("warmup\t" + warmup_snapshot);
+        System.out.println("warmup\t" + warmup_snapshot);
         ExecutionSnapshot exec_snapshot = timeRandomSequence(G, n_ops);
         System.out.println("exec\t" + exec_snapshot); // useful for time
         G = new OpSequenceGenerator();
@@ -477,7 +477,7 @@ public final class SetTester
         if (num_ops == 0) 
             num_ops = 1000000;
 
-        Set<Object> trythis = new HashSet<>(2048,0.5f);
+        Set<Object> trythis =  new HashSet<>(2048, 0.5f); //new koekoeke.CuckooHashingSet(2048); //
         SetTester tester = new SetTester(trythis, ins_rate, dup_rate, seed);
 //        System.out.println("#Test: mean size "+tester.sizeMean()+", variance "+tester.sizeVariance()+", sd "+Math.sqrt(tester.sizeVariance())+"; ins "+ins_rate+", dup "+dup_rate);
 
